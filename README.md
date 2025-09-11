@@ -64,28 +64,67 @@ A modern full-stack task management application built to showcase professional d
 ### Installation & Setup
 
 #### 1. Clone the Repository
-```bash
-git clone <repository-url>
-cd "Laravel API + Vue 3 Frontend"
+```powershell
+cd "C:\DEV"
+git clone https://github.com/GeoffAAA/laravel-vue-task-manager.git
+cd "laravel-vue-task-manager"
 ```
 
 #### 2. Backend Setup (Laravel API)
-```bash
+```powershell
 cd tasks-api
-composer install
+copy .env.example .env
+
+# Create SQLite database file (default DB in this repo)
+New-Item -ItemType File -Path ".\database\database.sqlite" -Force | Out-Null
+
+composer install --no-interaction --prefer-dist
 php artisan key:generate
-php artisan migrate
+php artisan migrate --seed
 php artisan serve
 ```
 **API Server:** http://localhost:8000
 
 #### 3. Frontend Setup (Vue 3)
-```bash
-cd tasks-frontend
-npx --yes npm install
-npx --yes vite
+```powershell
+cd ..\tasks-frontend
+npm ci
+npx vite
 ```
 **Frontend Server:** http://localhost:5173
+
+> API base URL is configured in `tasks-frontend/src/axios.js` as `http://localhost:8000/api`. If you change API port/host, update it there or use an environment variable approach.
+
+### macOS Setup (Alternative)
+
+#### 1. Clone the Repository
+```bash
+cd "$HOME/Dev"
+git clone https://github.com/GeoffAAA/laravel-vue-task-manager.git
+cd laravel-vue-task-manager
+```
+
+#### 2. Backend Setup (Laravel API)
+```bash
+cd tasks-api
+cp .env.example .env
+
+# Create SQLite database file (default DB in this repo)
+mkdir -p database
+touch database/database.sqlite
+
+composer install --no-interaction --prefer-dist
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
+```
+
+#### 3. Frontend Setup (Vue 3)
+```bash
+cd ../tasks-frontend
+npm ci
+npx vite
+```
 
 ### 🎯 Usage Guide
 

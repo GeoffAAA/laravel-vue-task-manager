@@ -21,20 +21,22 @@ Vue 3 + TypeScript frontend for the Task Manager application.
 
 ## Development
 
-```bash
+```powershell
 # Install dependencies
-npx --yes npm install
+npm ci
 
 # Start development server
-npx --yes vite
+npx vite
 
 # Build for production
-npx --yes vite build
+npx vite build
 ```
 
 ## API Integration
 
-The frontend connects to the Laravel API at `http://127.0.0.1:8000/api` with the following endpoints:
+The frontend connects to the Laravel API at `http://localhost:8000/api` by default (see `src/axios.js`). Update this if your API runs on a different host/port.
+
+Endpoints:
 
 - `POST /api/register` - User registration
 - `POST /api/login` - User login
