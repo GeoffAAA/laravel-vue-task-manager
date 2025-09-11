@@ -1,0 +1,61 @@
+# Task Manager Frontend
+
+Vue 3 + TypeScript frontend for the Task Manager application.
+
+## Features
+
+- **Authentication**: Login/Register with Laravel Sanctum
+- **Task Management**: Create, read, update, delete tasks
+- **Real-time Chart**: Chart.js visualization of task status
+- **Responsive Design**: Tailwind CSS for modern styling
+- **Route Protection**: Authenticated routes with token validation
+
+## Tech Stack
+
+- Vue 3 with Composition API
+- TypeScript
+- Vue Router
+- Axios for API communication
+- Chart.js for data visualization
+- Tailwind CSS for styling
+
+## Development
+
+```bash
+# Install dependencies
+npx --yes npm install
+
+# Start development server
+npx --yes vite
+
+# Build for production
+npx --yes vite build
+```
+
+## API Integration
+
+The frontend connects to the Laravel API at `http://127.0.0.1:8000/api` with the following endpoints:
+
+- `POST /api/register` - User registration
+- `POST /api/login` - User login
+- `POST /api/logout` - User logout
+- `GET /api/tasks` - Get user tasks
+- `POST /api/tasks` - Create new task
+- `PUT /api/tasks/{id}` - Update task
+- `DELETE /api/tasks/{id}` - Delete task
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── TaskList.vue      # Task list with toggle/delete
+│   └── TaskChart.vue     # Chart.js visualization
+├── views/
+│   ├── LoginView.vue     # Login/Register form
+│   └── DashboardView.vue # Main dashboard
+├── router/
+│   └── index.ts          # Vue Router configuration
+├── axios.js              # API client configuration
+└── main.ts               # Application entry point
+```

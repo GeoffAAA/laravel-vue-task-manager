@@ -1,0 +1,56 @@
+﻿# Laravel
+/vendor/
+/node_modules/
+.env
+.phpunit.result.cache
+/storage/*.key
+/public/storage
+/storage/logs/
+/storage/framework/cache/
+/storage/framework/sessions/
+/storage/framework/views/
+Homestead.yaml
+Homestead.json
+.idea/
+.php-cs-fixer.cache
+
+# Vite/Build
+/tasks-frontend/dist/
+/tasks-frontend/.vite/
+/tasks-frontend/.tsbuildinfo
+/tasks-frontend/node_modules/
+/tasks-api/public/app/
+/tasks-api/node_modules/
+/tasks-api/storage/
+/tasks-api/.env
+
+# Node
+**/node_modules/
+**/.vite/
+**/.tsbuildinfo
+
+# OS/Editor
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+.vscode/
+
+# Coverage/Tests
+coverage/
+coverage/**
+*.lcov
+/.nyc_output/
+/.playwright/**
+/tasks-frontend/test-results/
+/tasks-frontend/playwright-report/
+/.idea/
+
+# OS/Editor
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+.vscode/
