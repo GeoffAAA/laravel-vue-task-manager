@@ -50,8 +50,8 @@ A modern full-stack task management application built to showcase professional d
 ### Development Tools
 - **ESLint** - Code linting
 - **Prettier** - Code formatting
-- **Vitest** - Unit testing
-- **Playwright** - E2E testing
+- **Vitest** - Unit testing (can be added)
+- **Playwright** - E2E testing (can be added)
 
 ## 🚀 Getting Started
 
