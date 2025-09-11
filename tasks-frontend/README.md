@@ -6,7 +6,7 @@ Vue 3 + TypeScript frontend for the Task Manager application.
 
 - **Authentication**: Login/Register with Laravel Sanctum (personal access tokens)
 - **Task Management**: Create, read, update, delete tasks
-- **Task Chart**: Chart.js visualization of task status
+- **Task Chart**: Chart.js pie chart of task status
 - **Responsive Design**: Modern, responsive layout
 - **Route Protection**: Authenticated routes with token validation
 

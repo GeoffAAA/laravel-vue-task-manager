@@ -19,7 +19,7 @@ A modern full-stack task management application built to showcase professional d
 - **Responsive Task List** with modern UI
 
 ### 📊 Data Visualization
-- **Interactive Pie Chart** showing task status distribution
+- **Interactive Chart.js pie chart** showing task status distribution
 - **Real-time Updates** when tasks change
 - **Chart.js Integration** for professional data visualization
 
