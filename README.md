@@ -6,7 +6,7 @@ A modern full-stack task management application built to showcase professional d
 
 ### 🔐 Authentication & Security
 - **User Registration & Login** with Laravel Sanctum
-- **JWT Token-based Authentication** (stateless)
+- **Sanctum Personal Access Tokens** (stateless API tokens)
 - **Password Hashing** with bcrypt
 - **Input Validation** on all endpoints
 - **CORS Configuration** for secure cross-origin requests
@@ -24,7 +24,7 @@ A modern full-stack task management application built to showcase professional d
 - **Chart.js Integration** for professional data visualization
 
 ### 🎨 User Experience
-- **Responsive Design** with Tailwind CSS
+- **Responsive Design**
 - **Loading States** and error handling
 - **Modern UI Components** with hover effects
 - **Mobile-friendly** interface
@@ -46,7 +46,6 @@ A modern full-stack task management application built to showcase professional d
 - **Vue Router 4** - Client-side routing
 - **Axios** - HTTP client for API communication
 - **Chart.js 4.4** - Data visualization library
-- **Tailwind CSS** - Utility-first CSS framework
 
 ### Development Tools
 - **ESLint** - Code linting
