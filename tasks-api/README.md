@@ -10,16 +10,18 @@
 ## Project Setup (This API)
 
 ```powershell
-cd "C:\DEV\laravel-vue-task-manager\tasks-api"
+cd "C:\DEV\Laravel API + Vue 3 Frontend\tasks-api"
 copy .env.example .env
 New-Item -ItemType File -Path ".\database\database.sqlite" -Force | Out-Null
 composer install --no-interaction --prefer-dist
 php artisan key:generate
 php artisan migrate --seed
-php artisan serve
+php artisan serve --port=8001
 ```
 
 Default DB is SQLite (see `config/database.php`). Update `.env` if switching to MySQL/PostgreSQL.
+
+Frontend runs on Vite at http://localhost:5174 (see `tasks-frontend/vite.config.ts`). If you change the frontend port, also update CORS in `config/cors.php` (`allowed_origins`) and the axios base URL in `tasks-frontend/src/axios.js`.
 
 ---
 
