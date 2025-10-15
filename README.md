@@ -80,9 +80,9 @@ New-Item -ItemType File -Path ".\database\database.sqlite" -Force | Out-Null
 composer install --no-interaction --prefer-dist
 php artisan key:generate
 php artisan migrate --seed
-php artisan serve
+php artisan serve --port=8001
 ```
-**API Server:** http://localhost:8000
+**API Server:** http://localhost:8001
 
 #### 3. Frontend Setup (Vue 3)
 ```powershell
@@ -90,9 +90,9 @@ cd ..\tasks-frontend
 npm ci
 npx vite
 ```
-**Frontend Server:** http://localhost:5173
+**Frontend Server:** http://localhost:5174
 
-> API base URL is configured in `tasks-frontend/src/axios.js` as `http://localhost:8000/api`. If you change API port/host, update it there or use an environment variable approach.
+> API base URL is configured in `tasks-frontend/src/axios.js` as `http://localhost:8001/api`. Frontend runs on port 5174 to avoid conflicts with other apps.
 
 ### macOS Setup (Alternative)
 
@@ -115,7 +115,7 @@ touch database/database.sqlite
 composer install --no-interaction --prefer-dist
 php artisan key:generate
 php artisan migrate --seed
-php artisan serve
+php artisan serve --port=8001
 ```
 
 #### 3. Frontend Setup (Vue 3)
@@ -124,6 +124,10 @@ cd ../tasks-frontend
 npm ci
 npx vite
 ```
+
+**Servers:**
+- API Server: http://localhost:8001
+- Frontend Server: http://localhost:5174
 
 ### 🎯 Usage Guide
 

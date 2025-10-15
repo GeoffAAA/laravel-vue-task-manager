@@ -77,10 +77,11 @@
             <input 
               v-model="registerData.password" 
               type="password" 
-              placeholder="Password" 
+              placeholder="Password (min. 8 characters)" 
               required 
               class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             />
+            <p class="mt-1 text-xs text-gray-500">Password must be at least 8 characters long</p>
           </div>
           <div>
             <button 
@@ -103,9 +104,14 @@
         </div>
       </div>
       
-      <!-- Error Message -->
+      <!-- Error Messages -->
       <div v-if="error" class="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md">
-        {{ error }}
+        <p class="font-semibold mb-1">{{ error }}</p>
+        <ul v-if="validationErrors && Object.keys(validationErrors).length > 0" class="list-disc list-inside space-y-1 text-sm mt-2">
+          <li v-for="(messages, field) in validationErrors" :key="field">
+            <strong class="capitalize">{{ field }}:</strong> {{ messages.join(', ') }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -121,6 +127,7 @@ const email = ref('');
 const password = ref('');
 const loading = ref(false);
 const error = ref('');
+const validationErrors = ref(null);
 const showRegister = ref(false);
 
 const registerData = ref({
@@ -132,6 +139,7 @@ const registerData = ref({
 async function login() {
   loading.value = true;
   error.value = '';
+  validationErrors.value = null;
   
   try {
     const response = await api.post('/login', {
@@ -142,7 +150,12 @@ async function login() {
     localStorage.setItem('token', response.data.token);
     router.push('/dashboard');
   } catch (err) {
-    error.value = err.response?.data?.error || 'Login failed';
+    if (err.response?.data?.errors) {
+      error.value = 'Please fix the following errors:';
+      validationErrors.value = err.response.data.errors;
+    } else {
+      error.value = err.response?.data?.error || 'Login failed';
+    }
   } finally {
     loading.value = false;
   }
@@ -151,6 +164,7 @@ async function login() {
 async function register() {
   loading.value = true;
   error.value = '';
+  validationErrors.value = null;
   
   try {
     const response = await api.post('/register', registerData.value);
@@ -158,7 +172,29 @@ async function register() {
     localStorage.setItem('token', response.data.token);
     router.push('/dashboard');
   } catch (err) {
-    error.value = err.response?.data?.message || 'Registration failed';
+    console.error('Registration error:', err.response);
+    
+    // Laravel validation errors
+    if (err.response?.data?.errors) {
+      error.value = 'Please fix the following errors:';
+      validationErrors.value = err.response.data.errors;
+    } 
+    // Other error messages
+    else if (err.response?.data?.message) {
+      error.value = err.response.data.message;
+    }
+    // Network or server error
+    else if (err.response?.status) {
+      error.value = `Registration failed (Error ${err.response.status}). Please try again.`;
+    }
+    // No response from server
+    else if (err.request) {
+      error.value = 'Cannot connect to server. Please check if the API is running on http://localhost:8001';
+    }
+    // Unknown error
+    else {
+      error.value = 'Registration failed: ' + err.message;
+    }
   } finally {
     loading.value = false;
   }
